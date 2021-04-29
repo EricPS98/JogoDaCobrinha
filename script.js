@@ -9,6 +9,8 @@ snake[0] = {
     y: 8 * box
 }
 
+let direction = "right";
+
 function criarBG() {
     context.fillStyle = "lightgreen"; 
     context.fillRect(0, 0, 16 * box, 16 * box); // Posição de X, Y, Altura e Largura
@@ -21,5 +23,37 @@ function criarCobrinha(){
     }
 }
 
-criarBG();
-criarCobrinha();
+function iniciarJogo(){
+    criarBG();
+    criarCobrinha();
+
+    let snakeX = snake[0].x;
+    let snakeY = snake[0].y;
+
+    //Acrescenta e diminui um "box" dependendo da direção em que a cobrinha estiver andando
+    if(direction == "right") {
+        snakeX += box;
+    }
+    if(direction == "left") {
+        snakeX -= box;
+    }
+    if(direction == "up") {
+        snakeY += box;
+    }
+    if(direction == "down") {
+        snakeY -= box;
+    }
+
+    //Retira o ultimo "box" da cobrinha (array)
+    snake.pop();
+
+    let newHead = {
+        x: snakeX, 
+        y: snakeY
+    }
+    
+    snake.unshift(newHead);
+}
+
+let jogo = setInterval(iniciarJogo, 100); //Intervalo de 100milissegundos para iniciar o jogo / dar continuidade caso travar
+
