@@ -74,6 +74,15 @@ function iniciarJogo(){
         snake[0].y = 16 * box;
     }
 
+    for(i = 1; i < snake.length; i++) { //Começa da posição 1 (cabeça da cobrinha)
+        if(snake[0].x == snake[i].x && snake[0].y == snake[i].y){ //Posição X[i] e Y[i] significa qualquer parte corpo da cobrinha
+         clearInterval(jogo);
+         alert('Game Over ;(');
+        }
+    }
+
+    
+
     criarBG();
     criarCobrinha();
     drawFood();
@@ -112,5 +121,5 @@ function iniciarJogo(){
     snake.unshift(newHead);
 }
 
-let jogo = setInterval(iniciarJogo, 200); //Intervalo de 100milissegundos para iniciar o jogo / dar continuidade caso travar
+let jogo = setInterval(iniciarJogo, 200); //Intervalo de 200milissegundos para iniciar o jogo / dar continuidade caso travar
 
