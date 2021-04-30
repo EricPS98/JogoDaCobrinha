@@ -1,3 +1,10 @@
+ /* Tamanho exato para o corpo da tela não crescer e a tela subir ou descer ao clicar nas setas do teclado */
 body {
-    
+    height: 95vh;
+    width: 95;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: green;
 }
