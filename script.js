@@ -95,8 +95,14 @@ function iniciarJogo(){
         snakeY -= box;
     }
 
-    //Retira o ultimo "box" da cobrinha (array)
-    snake.pop();
+    //Cobrinha não cresce se não passar na comida, se passar, cresce 1 "Box"
+    if(snakeX != food.x || snakeY != food.y){
+        //Retira o ultimo "box" da cobrinha (array)
+        snake.pop();
+    } else {
+        food.x = Math.floor(Math.random() * 15 + 1) * box; 
+        food.y = Math.floor(Math.random() * 15 + 1) * box;
+    }
 
     let newHead = {
         x: snakeX, 
