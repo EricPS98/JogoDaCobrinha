@@ -10,6 +10,10 @@ snake[0] = {
 }
 
 let direction = "right";
+let food = { //Comida aparecerá em lugares ramdômicos sem ultrapassar o tamanho da tela
+    x: Math.floor(Math.random() * 15 + 1) * box, 
+    y: Math.floor(Math.random() * 15 + 1) * box
+}
 
 function criarBG() {
     context.fillStyle = "lightgreen"; 
@@ -21,6 +25,11 @@ function criarCobrinha(){
         context.fillStyle = "black";
         context.fillRect(snake[i].x, snake[i].y, box, box); // Tamanho de X e Y definidos na linha 8 e 9 do código, e o tamanho de box definido na linha 32
     }
+}
+
+function drawFood(){
+    context.fillStyle = "red";
+    context.fillRect(food.x, food.y, box, box);
 }
 
 document.addEventListener('keydown', update); // Captura a tecla de seta para baixo do teclado e chama a função update
@@ -67,6 +76,7 @@ function iniciarJogo(){
 
     criarBG();
     criarCobrinha();
+    drawFood();
 
     let snakeX = snake[0].x;
     let snakeY = snake[0].y;
